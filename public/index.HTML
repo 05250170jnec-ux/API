@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task List</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>Task List</h1>
+      <p class="subtitle">Express + MySQL REST API</p>
+    </header>
+
+    <form id="task-form" autocomplete="off">
+      <input
+        type="text"
+        id="task-input"
+        placeholder="What needs to be done?"
+        maxlength="255"
+        required
+      />
+      <button type="submit">Add</button>
+    </form>
+
+    <div class="toolbar">
+      <div class="filters" role="group" aria-label="Filter tasks">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="active">Active</button>
+        <button class="filter" data-filter="done">Done</button>
+      </div>
+      <span id="counter" class="counter"></span>
+    </div>
+
+    <p id="message" class="message" role="status"></p>
+    <ul id="task-list" class="task-list"></ul>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

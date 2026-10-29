@@ -3,6 +3,7 @@
 
 require('dotenv').config();
 
+const path = require('path');
 const express = require('express');
 const taskRoutes = require('./src/routes/taskRoutes');
 
@@ -10,8 +11,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));   // serves public/index.html at "/"
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.json({ message: 'Task API is ready!', version: 'MySQL + MVC' });
 });
 
@@ -26,7 +28,7 @@ app.use((err, req, res, next) => {
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
-  console.log('GET    /');
+  console.log('GET    /api');
   console.log('GET    /tasks');
   console.log('POST   /tasks');
   console.log('GET    /tasks/:id');

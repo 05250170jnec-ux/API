@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Task List</title>
+  <meta name="description" content="A task manager built with Express, MySQL and a REST API." />
+  <meta name="theme-color" content="#4f46e5" />
+  <title>Task List | Express + MySQL REST API</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -14,9 +16,11 @@
     </header>
 
     <form id="task-form" autocomplete="off">
+      <label for="task-input" class="visually-hidden">New task</label>
       <input
         type="text"
         id="task-input"
+        name="title"
         placeholder="What needs to be done?"
         maxlength="255"
         required
@@ -24,17 +28,23 @@
       <button type="submit">Add</button>
     </form>
 
-    <div class="toolbar">
-      <div class="filters" role="group" aria-label="Filter tasks">
-        <button class="filter active" data-filter="all">All</button>
-        <button class="filter" data-filter="active">Active</button>
-        <button class="filter" data-filter="done">Done</button>
+    <section aria-label="Task list">
+      <div class="toolbar">
+        <div class="filters" role="group" aria-label="Filter tasks">
+          <button type="button" class="filter active" data-filter="all">All</button>
+          <button type="button" class="filter" data-filter="active">Active</button>
+          <button type="button" class="filter" data-filter="done">Done</button>
+        </div>
+        <span id="counter" class="counter" aria-live="polite"></span>
       </div>
-      <span id="counter" class="counter"></span>
-    </div>
 
-    <p id="message" class="message" role="status"></p>
-    <ul id="task-list" class="task-list"></ul>
+      <p id="message" class="message" role="status"></p>
+      <ul id="task-list" class="task-list"></ul>
+    </section>
+
+    <noscript>
+      <p class="message">JavaScript is required to use this application.</p>
+    </noscript>
   </main>
 
   <script src="script.js"></script>
